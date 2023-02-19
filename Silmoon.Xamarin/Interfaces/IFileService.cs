@@ -8,6 +8,6 @@ namespace Silmoon.Xamarin.Interfaces
 {
     public interface IFileService
     {
-        void SaveImage(string name, byte[] data, Action<bool> callback);
+        void SaveImage(string name, byte[] data, Action<bool> callback, string albumName = null);
     }
 }

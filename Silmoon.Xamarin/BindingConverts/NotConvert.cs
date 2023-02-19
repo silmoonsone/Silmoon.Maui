@@ -7,16 +7,15 @@ using Xamarin.Forms;
 
 namespace Silmoon.Xamarin.BindingConverts
 {
-    public class ByteArrayToImageSourceConverter : IValueConverter
+    public class NotConvert : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            return ByteToImageSource(value as byte[]);
+            return !(bool)value;
         }
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            return null;
+            return !(bool)value;
         }
-        public static ImageSource ByteToImageSource(byte[] imageBytes) => imageBytes == null || imageBytes.Length == 0 ? null : ImageSource.FromStream(() => new MemoryStream(imageBytes));
     }
 }
