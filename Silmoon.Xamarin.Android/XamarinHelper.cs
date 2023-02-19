@@ -12,6 +12,7 @@ namespace Silmoon.Xamarin.Android
         public static void RegisterServices()
         {
             DependencyService.Register<IFileService, FileService>();
+            //DependencyService.Register<INotificationManager, AndroidNotificationManager>();
         }
     }
 }
