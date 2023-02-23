@@ -48,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AndroidNotificationManager.cs" />
+    <Compile Include="AppInstaller.cs" />
+    <Compile Include="AppPackage.cs" />
     <Compile Include="FileService.cs" />
     <Compile Include="Renders\ClearEntryRender.cs" />
     <Compile Include="Resources\Resource.designer.cs" />

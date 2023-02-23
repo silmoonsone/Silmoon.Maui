@@ -16,6 +16,7 @@ namespace Silmoon.Xamarin.iOS
             DependencyService.Register<IFileService, FileService>();
             DependencyService.Register<IInAppPurchase, InAppPurchase>();
             DependencyService.Register<INotificationManager, iOSNotificationManager>();
+            DependencyService.Register<IAppPackage, AppPackage>();
         }
     }
 }
