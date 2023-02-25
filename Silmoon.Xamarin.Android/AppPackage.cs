@@ -4,12 +4,15 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Silmoon.Xamarin.Android;
 using Silmoon.Xamarin.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Xamarin.Forms;
 
+[assembly: Dependency(typeof(AppPackage))]
 namespace Silmoon.Xamarin.Android
 {
     public class AppPackage : IAppPackage
@@ -17,7 +20,7 @@ namespace Silmoon.Xamarin.Android
         public AppPackageInfo GetPackageInfo()
         {
 
-            var context = Application.Context;
+            var context = global::Android.App.Application.Context;
             var packageName = context.PackageName;
             var packageInfo = context.PackageManager.GetPackageInfo(packageName, 0);
 

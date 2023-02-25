@@ -46,7 +46,7 @@
     <Compile Include="Renders\ClearEntryRender.cs" />
     <Compile Include="FileService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XamarinHelper.cs" />
+    <Compile Include="Renders\HybridWebViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Silmoon.Xamarin\Silmoon.Xamarin.csproj">
