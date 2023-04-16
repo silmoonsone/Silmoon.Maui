@@ -43,8 +43,7 @@ namespace Silmoon.Xamarin.Android.Renders
             {
                 Control.SetWebViewClient(new HybridWebViewClient(this, $"javascript: {JavascriptFunction}"));
                 Control.AddJavascriptInterface(new JSBridge(this), "jsBridge");
-                AWebView aWebview = Control;
-                aWebview.Settings.SetSupportMultipleWindows(false);
+                Control.Settings.SetSupportMultipleWindows(false);
             }
         }
 

@@ -19,12 +19,13 @@ namespace Silmoon.Xamarin.iOS.Renders
         const string JavaScriptFunction = "function __webAppInvoke(method, data){window.webkit.messageHandlers.invokeAction.postMessage(method + \";\" + data);}";
         WKUserContentController userController;
 
-        public HybridWebViewRenderer() : this(new WKWebViewConfiguration())
+        public HybridWebViewRenderer() : this(new WKWebViewConfiguration() { AllowsInlineMediaPlayback = true })
         {
         }
 
         public HybridWebViewRenderer(WKWebViewConfiguration config) : base(config)
         {
+            config.AllowsInlineMediaPlayback = true;
             userController = config.UserContentController;
             var script = new WKUserScript(new NSString(JavaScriptFunction), WKUserScriptInjectionTime.AtDocumentEnd, false);
             userController.AddUserScript(script);
