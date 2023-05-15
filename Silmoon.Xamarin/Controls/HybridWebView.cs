@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace Silmoon.Xamarin.Controller
+namespace Silmoon.Xamarin.Controls
 {
     [global::Xamarin.Forms.Internals.Preserve(AllMembers = true)]
     public class HybridWebView : WebView

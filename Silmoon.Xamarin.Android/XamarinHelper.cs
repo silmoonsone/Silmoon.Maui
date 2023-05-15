@@ -4,6 +4,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Silmoon.Xamarin.Android.Renders;
 using Silmoon.Xamarin.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,10 @@ namespace Silmoon.Xamarin.Android
             DependencyService.Register<IAppInstaller, AppInstaller>();
             //DependencyService.Register<INotificationManager, AndroidNotificationManager>();
             DependencyService.Register<IAppPackage, AppPackage>();
+        }
+        public static void InitRenderers()
+        {
+            SelectableLabelRenderer selectableLabelRenderer = new SelectableLabelRenderer(null);
         }
     }
 }

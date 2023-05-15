@@ -22,4 +22,13 @@
 	  <Folder Include="Platforms\Tizen\" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Reference Include="Silmoon">
+	    <HintPath>..\..\Silmoon\Silmoon\bin\Release\netstandard2.0\Silmoon.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Silmoon.Extension">
+	    <HintPath>..\..\Silmoon\Silmoon.Extension\bin\Release\netstandard2.0\Silmoon.Extension.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
 </Project>

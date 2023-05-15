@@ -7,8 +7,8 @@ using UIKit;
 using WebKit;
 using Xamarin.Forms.Platform.iOS;
 using Xamarin.Forms;
-using Silmoon.Xamarin.Controller;
 using Silmoon.Xamarin.iOS.Renders;
+using Silmoon.Xamarin.Controls;
 
 [assembly: ExportRenderer(typeof(HybridWebView), typeof(HybridWebViewRenderer))]
 namespace Silmoon.Xamarin.iOS.Renders

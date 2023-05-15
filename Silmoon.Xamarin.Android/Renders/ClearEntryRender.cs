@@ -5,7 +5,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Silmoon.Xamarin.Android.Renders;
-using Silmoon.Xamarin.Controller;
+using Silmoon.Xamarin.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;

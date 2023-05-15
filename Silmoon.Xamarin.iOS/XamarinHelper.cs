@@ -1,5 +1,6 @@
 ﻿using Foundation;
 using Silmoon.Xamarin.Interfaces;
+using Silmoon.Xamarin.iOS.Renders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,10 @@ namespace Silmoon.Xamarin.iOS
             DependencyService.Register<IInAppPurchase, InAppPurchase>();
             DependencyService.Register<INotificationManager, iOSNotificationManager>();
             DependencyService.Register<IAppPackage, AppPackage>();
+        }
+        public static void InitRenderers()
+        {
+            SelectableLabelRenderer selectableLabelRenderer = new SelectableLabelRenderer();
         }
     }
 }

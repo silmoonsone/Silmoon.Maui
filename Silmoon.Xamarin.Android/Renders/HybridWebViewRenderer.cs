@@ -8,7 +8,7 @@ using Android.Webkit;
 using Android.Widget;
 using Java.Interop;
 using Silmoon.Xamarin.Android.Renders;
-using Silmoon.Xamarin.Controller;
+using Silmoon.Xamarin.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
