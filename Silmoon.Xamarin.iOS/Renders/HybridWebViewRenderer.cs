@@ -49,7 +49,7 @@ namespace Silmoon.Xamarin.iOS.Renders
                 if (webView != null)
                 {
                     //webView.Configuration.SetUrlSchemeHandler(new WeixinHandler(), "weixin");
-                    webView.NavigationDelegate = new MysWKNavigationDelegate(this, webView.NavigationDelegate);
+                    webView.NavigationDelegate = new MyWKNavigationDelegate(this, webView.NavigationDelegate);
                 }
             }
 
@@ -71,14 +71,14 @@ namespace Silmoon.Xamarin.iOS.Renders
         }
 
 
-        private class MysWKNavigationDelegate : WKNavigationDelegate
+        private class MyWKNavigationDelegate : WKNavigationDelegate
         {
             private readonly IWKNavigationDelegate _defaultDelegate;
-            HybridWebViewRenderer renderer { get; set; }
+            HybridWebViewRenderer _renderer { get; set; }
 
-            public MysWKNavigationDelegate(HybridWebViewRenderer renderer, IWKNavigationDelegate defaultDelegate)
+            public MyWKNavigationDelegate(HybridWebViewRenderer renderer, IWKNavigationDelegate defaultDelegate)
             {
-                this.renderer = renderer;
+                _renderer = renderer;
                 _defaultDelegate = defaultDelegate;
             }
 
@@ -90,7 +90,7 @@ namespace Silmoon.Xamarin.iOS.Renders
             public override void DidReceiveAuthenticationChallenge(WKWebView webView, NSUrlAuthenticationChallenge challenge, Action<NSUrlSessionAuthChallengeDisposition, NSUrlCredential> completionHandler)
             {
                 //忽略开发HTTPS验证
-                if (((HybridWebView)renderer.Element).IgnoreSslErrors)
+                if (((HybridWebView)_renderer.Element).IgnoreSslErrors)
                 {
                     using (var cred = NSUrlCredential.FromTrust(challenge.ProtectionSpace.ServerSecTrust))
                     {
@@ -100,7 +100,6 @@ namespace Silmoon.Xamarin.iOS.Renders
                 else
                 {
                     completionHandler.Invoke(NSUrlSessionAuthChallengeDisposition.PerformDefaultHandling, null);
-
                 }
             }
             public override void DecidePolicy(WKWebView webView, WKNavigationAction navigationAction, Action<WKNavigationActionPolicy> decisionHandler)
@@ -123,7 +122,8 @@ namespace Silmoon.Xamarin.iOS.Renders
                 {
 
                 }
-                _defaultDelegate.DecidePolicy(webView, navigationAction, decisionHandler);
+                //_defaultDelegate.DecidePolicy(webView, navigationAction, decisionHandler);
+                decisionHandler(WKNavigationActionPolicy.Allow);
             }
         }
     }

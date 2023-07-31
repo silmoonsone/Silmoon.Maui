@@ -30,7 +30,7 @@ namespace Silmoon.Maui.Platforms.iOS.Handlers
                 platformView.Configuration.UserContentController.AddUserScript(new WKUserScript(new NSString(JavaScriptFunction), WKUserScriptInjectionTime.AtDocumentEnd, false));
                 platformView.Configuration.UserContentController.AddScriptMessageHandler(scriptHandler, "invokeAction");
                 //webView.Configuration.SetUrlSchemeHandler(new WeixinHandler(), "weixin");
-                platformView.NavigationDelegate = new MysWKNavigationDelegate(this, platformView.NavigationDelegate);
+                platformView.NavigationDelegate = new MyWKNavigationDelegate(this, platformView.NavigationDelegate);
             }
 
             base.ConnectHandler(platformView);
@@ -59,14 +59,14 @@ namespace Silmoon.Maui.Platforms.iOS.Handlers
             }
         }
 
-        private class MysWKNavigationDelegate : WKNavigationDelegate
+        private class MyWKNavigationDelegate : WKNavigationDelegate
         {
             private readonly IWKNavigationDelegate _defaultDelegate;
-            HybridWebViewHandler renderer { get; set; }
+            HybridWebViewHandler _renderer { get; set; }
 
-            public MysWKNavigationDelegate(HybridWebViewHandler renderer, IWKNavigationDelegate defaultDelegate)
+            public MyWKNavigationDelegate(HybridWebViewHandler renderer, IWKNavigationDelegate defaultDelegate)
             {
-                this.renderer = renderer;
+                _renderer = renderer;
                 _defaultDelegate = defaultDelegate;
             }
 
@@ -79,7 +79,7 @@ namespace Silmoon.Maui.Platforms.iOS.Handlers
             public override void DidReceiveAuthenticationChallenge(WKWebView webView, NSUrlAuthenticationChallenge challenge, Action<NSUrlSessionAuthChallengeDisposition, NSUrlCredential> completionHandler)
             {
                 //忽略开发HTTPS验证
-                if (((HybridWebView)renderer.VirtualView).IgnoreSslErrors)
+                if (((HybridWebView)_renderer.VirtualView).IgnoreSslErrors)
                 {
                     using (var cred = NSUrlCredential.FromTrust(challenge.ProtectionSpace.ServerSecTrust))
                     {
@@ -89,7 +89,6 @@ namespace Silmoon.Maui.Platforms.iOS.Handlers
                 else
                 {
                     completionHandler.Invoke(NSUrlSessionAuthChallengeDisposition.PerformDefaultHandling, null);
-
                 }
             }
             public override void DecidePolicy(WKWebView webView, WKNavigationAction navigationAction, Action<WKNavigationActionPolicy> decisionHandler)
@@ -112,7 +111,7 @@ namespace Silmoon.Maui.Platforms.iOS.Handlers
                 {
 
                 }
-                _defaultDelegate.DecidePolicy(webView, navigationAction, decisionHandler);
+                decisionHandler(WKNavigationActionPolicy.Allow);
             }
         }
     }
