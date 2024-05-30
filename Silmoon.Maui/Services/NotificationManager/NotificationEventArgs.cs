@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace Silmoon.Maui.Services.NotificationManager
 {
@@ -13,7 +14,7 @@ namespace Silmoon.Maui.Services.NotificationManager
         public string Message { get; set; }
         public ReceiveType Type { get; set; }
         public string Identifier { get; set; }
-        public string Data { get; set; }
+        public JObject Data { get; set; }
         public PushPlatform PushPlatform { get; set; }
     }
 }

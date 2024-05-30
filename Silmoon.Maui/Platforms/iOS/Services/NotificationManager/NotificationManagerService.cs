@@ -1,4 +1,5 @@
 ﻿using Foundation;
+using Newtonsoft.Json.Linq;
 using Silmoon.Maui.Services.PushNotifications;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,12 @@ namespace Silmoon.Maui.Services.NotificationManager
 {
     public class NotificationManagerService : INotificationManagerService
     {
-        bool hasNotificationsPermission;
-        public event Action<NotificationEventArgs> NotificationReceived;
+        public event Action<NotificationEventArgs> OnNotificationReceived;
         public event Action<string> OnDeviceTokenReceived;
         public event Action<bool> OnNotificationPermissionResult;
+
+        public string DeviceToken { get; private set; }
+        public bool IsNotificationPermissionGranted { get; private set; }
 
         public void Initialize()
         {
@@ -23,14 +26,14 @@ namespace Silmoon.Maui.Services.NotificationManager
             UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Sound | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Alert, (approved, err) =>
             {
                 UIApplication.SharedApplication.InvokeOnMainThread(() => UIApplication.SharedApplication.RegisterForRemoteNotifications());
-                hasNotificationsPermission = approved;
+                IsNotificationPermissionGranted = approved;
                 OnNotificationPermissionResult?.Invoke(approved);
             });
         }
 
         public bool SendNotification(string title, string subTitle, string message, DateTime? notifyTime = null)
         {
-            if (!hasNotificationsPermission) return false;
+            if (!IsNotificationPermissionGranted) return false;
 
             var content = new UNMutableNotificationContent()
             {
@@ -68,7 +71,7 @@ namespace Silmoon.Maui.Services.NotificationManager
             UNUserNotificationCenter.Current.SetBadgeCountAsync(number);
 #pragma warning restore CA1416 // Validate platform compatibility
         }
-        public void onReceiveNotification(string title, string subTitle, string message, ReceiveType type, string identifier, string data, PushPlatform pushPlatform)
+        public void onReceiveNotification(string title, string subTitle, string message, ReceiveType type, string identifier, JObject data, PushPlatform pushPlatform)
         {
             var args = new NotificationEventArgs()
             {
@@ -80,7 +83,7 @@ namespace Silmoon.Maui.Services.NotificationManager
                 Data = data,
                 PushPlatform = pushPlatform
             };
-            NotificationReceived?.Invoke(args);
+            OnNotificationReceived?.Invoke(args);
         }
         public void onReceiveDeviceToken(string deviceToken)
         {
