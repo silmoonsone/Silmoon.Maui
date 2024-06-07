@@ -6,16 +6,9 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Silmoon" Version="1.2.3.3" />
+    <PackageReference Include="Silmoon.Extension" Version="1.2.3.4" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2662" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Silmoon">
-      <HintPath>..\..\Silmoon\Silmoon\bin\Release\netstandard2.0\Silmoon.dll</HintPath>
-    </Reference>
-    <Reference Include="Silmoon.Extension">
-      <HintPath>..\..\Silmoon\Silmoon.Extension\bin\Release\netstandard2.0\Silmoon.Extension.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

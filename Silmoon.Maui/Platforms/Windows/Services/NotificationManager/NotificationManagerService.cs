@@ -8,7 +8,7 @@ using Silmoon.Maui.Services.NotificationManager;
 
 namespace Silmoon.Maui.Services.NotificationManager
 {
-    internal class NotificationManagerService : INotificationManagerService
+    public class NotificationManagerService : INotificationManagerService
     {
         public event Action<NotificationEventArgs> OnNotificationReceived;
         public event Action<string> OnDeviceTokenReceived;
@@ -19,7 +19,7 @@ namespace Silmoon.Maui.Services.NotificationManager
 
         public void Initialize()
         {
-            throw new NotImplementedException();
+
         }
 
         public void onReceiveDeviceToken(string deviceToken)

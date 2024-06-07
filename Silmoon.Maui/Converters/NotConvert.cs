@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Silmoon.Maui.BindingConverts
+namespace Silmoon.Maui.Converters
 {
-    public class ByteArrayToImageSourceConvert : IValueConverter
+    public class NotConvert : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            return ByteToImageSource(value as byte[]);
+            if (value is bool value2) return !value2;
+            else return value;
         }
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            return null;
+            if (value is bool value2) return !value2;
+            else return value;
         }
-        public static ImageSource ByteToImageSource(byte[] imageBytes) => imageBytes == null || imageBytes.Length == 0 ? null : ImageSource.FromStream(() => new MemoryStream(imageBytes));
     }
 }

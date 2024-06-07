@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace Silmoon.Maui.BindingConverts
+namespace Silmoon.Maui.Converters
 {
     public class IsNullOrEmptyConvert : IValueConverter
     {
@@ -25,7 +25,6 @@ namespace Silmoon.Maui.BindingConverts
             {
                 return false;
             }
-
             return true;
         }
 

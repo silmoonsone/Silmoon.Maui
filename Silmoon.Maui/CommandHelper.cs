@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Silmoon.Maui
 {
-    public class CommandUtils
+    public class CommandHelper
     {
         public static Command<CheckBox> CheckBoxFireCommand { get; set; } = new Command<CheckBox>((checkBox) => checkBox.IsChecked = !checkBox.IsChecked);
     }
