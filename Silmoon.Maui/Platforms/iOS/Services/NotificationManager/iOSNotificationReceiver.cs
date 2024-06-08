@@ -26,9 +26,17 @@ namespace Silmoon.Maui.Services.PushNotifications
             string subTitle = notification.Request.Content.Subtitle;
             string message = notification.Request.Content.Body;
             string identifier = notification.Request.Identifier;
-            notificationManagerService.onReceiveNotification(title, subTitle, message, ReceiveType.NotificationListen, identifier, jsonData, PushPlatform.iOS);
+            var result = notificationManagerService.onReceiveNotification(title, subTitle, message, identifier, jsonData, PushPlatform.iOS);
 
-            completionHandler(UNNotificationPresentationOptions.List | UNNotificationPresentationOptions.Banner);
+            if (result is null)
+            {
+                completionHandler(UNNotificationPresentationOptions.List | UNNotificationPresentationOptions.Banner);
+            }
+            else
+            {
+                UNNotificationPresentationOptions options = (UNNotificationPresentationOptions)result;
+                completionHandler(options);
+            }
         }
         public override void DidReceiveNotificationResponse(UNUserNotificationCenter center, UNNotificationResponse response, Action completionHandler)
         {
@@ -41,7 +49,7 @@ namespace Silmoon.Maui.Services.PushNotifications
                 string subTitle = response.Notification.Request.Content.Subtitle;
                 string message = response.Notification.Request.Content.Body;
                 string identifier = response.Notification.Request.Identifier;
-                notificationManagerService.onReceiveNotification(title, subTitle, message, ReceiveType.NotificationClicked, identifier, jsonData, PushPlatform.iOS);
+                notificationManagerService.onClickNotification(title, subTitle, message, identifier, jsonData, PushPlatform.iOS);
             }
             completionHandler();
         }

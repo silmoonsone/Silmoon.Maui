@@ -12,7 +12,6 @@ namespace Silmoon.Maui.Services.NotificationManager
         public string Title { get; set; }
         public string SubTitle { get; set; }
         public string Message { get; set; }
-        public ReceiveType Type { get; set; }
         public string Identifier { get; set; }
         public JObject Data { get; set; }
         public PushPlatform PushPlatform { get; set; }

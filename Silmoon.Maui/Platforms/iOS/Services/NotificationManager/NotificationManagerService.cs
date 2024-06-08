@@ -1,5 +1,6 @@
 ﻿using Foundation;
 using Newtonsoft.Json.Linq;
+using Silmoon.Maui.Enums;
 using Silmoon.Maui.Services.PushNotifications;
 using System;
 using System.Collections.Generic;
@@ -13,14 +14,15 @@ namespace Silmoon.Maui.Services.NotificationManager
 {
     public class NotificationManagerService : INotificationManagerService
     {
-        public event Action<NotificationEventArgs> OnNotificationReceived;
+        public event Func<NotificationEventArgs, NotificationBehaviorType?> OnNotificationReceived;
+        public event Action<NotificationEventArgs> OnNotificationClicked;
         public event Action<string> OnDeviceTokenReceived;
         public event Action<bool> OnNotificationPermissionResult;
 
         public string DeviceToken { get; private set; }
         public bool IsNotificationPermissionGranted { get; private set; }
 
-        public void Initialize()
+        public bool Initialize()
         {
             UNUserNotificationCenter.Current.Delegate = new iOSNotificationReceiver(this);
             UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Sound | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Alert, (approved, err) =>
@@ -29,6 +31,7 @@ namespace Silmoon.Maui.Services.NotificationManager
                 IsNotificationPermissionGranted = approved;
                 OnNotificationPermissionResult?.Invoke(approved);
             });
+            return true;
         }
 
         public bool SendNotification(string title, string subTitle, string message, DateTime? notifyTime = null)
@@ -65,30 +68,50 @@ namespace Silmoon.Maui.Services.NotificationManager
             });
             return true;
         }
-        public void SetBadgeNumber(int number)
+        public bool SetBadgeNumber(int number)
         {
 #pragma warning disable CA1416 // Validate platform compatibility
             UNUserNotificationCenter.Current.SetBadgeCountAsync(number);
+            return true;
 #pragma warning restore CA1416 // Validate platform compatibility
         }
-        public void onReceiveNotification(string title, string subTitle, string message, ReceiveType type, string identifier, JObject data, PushPlatform pushPlatform)
+        /// <summary>
+        /// 这里返回的NotificationBehaviorType类型表示如果应用在前台的时候收到了通知，应该如何处理。有的情况下应用在前台收到通知不应该弹出通知，而是直接处理。如果返回null，会使用默认的处理方式（List、Banner）。
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="subTitle"></param>
+        /// <param name="message"></param>
+        /// <param name="identifier"></param>
+        /// <param name="data"></param>
+        /// <param name="pushPlatform"></param>
+        /// <returns></returns>
+        public NotificationBehaviorType? onReceiveNotification(string title, string subTitle, string message, string identifier, JObject data, PushPlatform pushPlatform)
         {
             var args = new NotificationEventArgs()
             {
                 Title = title,
                 SubTitle = subTitle,
                 Message = message,
-                Type = type,
+                Identifier = identifier,
+                Data = data,
+                PushPlatform = pushPlatform,
+            };
+            return OnNotificationReceived?.Invoke(args);
+        }
+        public void onClickNotification(string title, string subTitle, string message, string identifier, JObject data, PushPlatform pushPlatform)
+        {
+            var args = new NotificationEventArgs()
+            {
+                Title = title,
+                SubTitle = subTitle,
+                Message = message,
                 Identifier = identifier,
                 Data = data,
                 PushPlatform = pushPlatform
             };
-            OnNotificationReceived?.Invoke(args);
+            OnNotificationClicked?.Invoke(args);
         }
-        public void onReceiveDeviceToken(string deviceToken)
-        {
-            OnDeviceTokenReceived?.Invoke(deviceToken);
-        }
+        public void onReceiveDeviceToken(string deviceToken) => OnDeviceTokenReceived?.Invoke(deviceToken);
 
 
         NSDateComponents GetNSDateComponents(DateTime dateTime)
