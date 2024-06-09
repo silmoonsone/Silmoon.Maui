@@ -7,7 +7,7 @@ using Newtonsoft.Json.Linq;
 using Silmoon.Maui.ArgumentModels;
 using Silmoon.Maui.Enums;
 
-namespace Silmoon.Maui.Services.NotificationManager
+namespace Silmoon.Maui.Services
 {
     public class NotificationManagerService : INotificationManagerService
     {

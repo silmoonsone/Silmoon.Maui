@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using UIKit;
 using UserNotifications;
 
-namespace Silmoon.Maui.Services.NotificationManager
+namespace Silmoon.Maui.Services
 {
     public class NotificationManagerService : INotificationManagerService
     {

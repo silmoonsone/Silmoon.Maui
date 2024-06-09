@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Silmoon.Maui.Services.NotificationManager
+namespace Silmoon.Maui.Services
 {
     public class NotificationManagerService : INotificationManagerService
     {
