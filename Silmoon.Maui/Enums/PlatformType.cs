@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Silmoon.Maui.Services.NotificationManager
+namespace Silmoon.Maui.Enums
 {
-    public enum PushPlatform
+    public enum PlatformType
     {
         Unknown = 0,
         Windows = 2,

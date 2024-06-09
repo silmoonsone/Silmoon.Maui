@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using Silmoon.Maui.ArgumentModels;
+using Silmoon.Maui.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
-using Silmoon.Maui.Enums;
-using Silmoon.Maui.Services.NotificationManager;
 
 namespace Silmoon.Maui.Services.NotificationManager
 {
@@ -29,12 +29,12 @@ namespace Silmoon.Maui.Services.NotificationManager
             throw new NotImplementedException();
         }
 
-        public NotificationBehaviorType? onReceiveNotification(string title, string subTitle, string message, string identifier, JObject data, PushPlatform pushPlatform)
+        public NotificationBehaviorType? onReceiveNotification(string title, string subTitle, string message, string identifier, JObject data, Enums.PlatformType pushPlatform)
         {
             throw new NotImplementedException();
         }
 
-        public void onClickNotification(string title, string subTitle, string message, string identifier, JObject data, PushPlatform pushPlatform)
+        public void onClickNotification(string title, string subTitle, string message, string identifier, JObject data, Enums.PlatformType pushPlatform)
         {
             throw new NotImplementedException();
         }

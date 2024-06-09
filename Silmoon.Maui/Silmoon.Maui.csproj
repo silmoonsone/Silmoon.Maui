@@ -18,7 +18,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Interfaces\" />
     <Folder Include="Platforms\Tizen\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 
   <ItemGroup>
