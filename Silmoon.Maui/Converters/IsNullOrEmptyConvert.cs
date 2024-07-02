@@ -11,20 +11,14 @@ namespace Silmoon.Maui.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is null) return true;
-
-            if (value is string str && str.IsNullOrEmpty())
-            {
+            if (value is null)
                 return true;
-            }
+            else if (value is string str)
+                return str.IsNullOrEmpty();
             else if (value is ICollection collection && collection.Count > 1)
-            {
                 return false;
-            }
             else if (value is Array array && array.Length > 1)
-            {
                 return false;
-            }
             return true;
         }
 
