@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static Android.App.ActionBar;
 using AWebView = Android.Webkit.WebView;
+using HybridWebView = Silmoon.Maui.Controls.HybridWebView;
 
 
 namespace Silmoon.Maui.Platforms.Android.Handlers

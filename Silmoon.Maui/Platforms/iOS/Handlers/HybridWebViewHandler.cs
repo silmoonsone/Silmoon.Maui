@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UIKit;
 using WebKit;
+using HybridWebView = Silmoon.Maui.Controls.HybridWebView;
 
 namespace Silmoon.Maui.Platforms.iOS.Handlers
 {
