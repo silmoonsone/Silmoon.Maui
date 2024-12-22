@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>net9.0;net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
@@ -28,7 +28,7 @@
     <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.21" />
     <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.21" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Silmoon" Version="1.6.4" />
+    <PackageReference Include="Silmoon" Version="1.6.6" />
     <PackageReference Include="Silmoon.Extension" Version="1.6.1" />
   </ItemGroup>
 
