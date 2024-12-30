@@ -6,8 +6,8 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Silmoon" Version="1.6.6" />
-    <PackageReference Include="Silmoon.Extension" Version="1.6.1" />
+    <PackageReference Include="Silmoon" Version="1.7.3" />
+    <PackageReference Include="Silmoon.Extension" Version="1.6.5" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2662" />
   </ItemGroup>
 

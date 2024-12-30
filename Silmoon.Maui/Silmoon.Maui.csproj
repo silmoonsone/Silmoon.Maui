@@ -18,17 +18,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Handlers\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="Platforms\Tizen\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.21" />
     <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.21" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Silmoon" Version="1.6.7" />
+    <PackageReference Include="Silmoon" Version="1.7.3" />
     <PackageReference Include="Silmoon.Extension" Version="1.6.5" />
   </ItemGroup>
 
