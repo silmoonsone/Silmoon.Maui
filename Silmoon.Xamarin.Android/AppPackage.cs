@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Xamarin.Forms;
+using static Android.Content.PM.PackageManager;
 
 [assembly: Dependency(typeof(AppPackage))]
 namespace Silmoon.Xamarin.Android
@@ -22,7 +23,7 @@ namespace Silmoon.Xamarin.Android
 
             var context = global::Android.App.Application.Context;
             var packageName = context.PackageName;
-            var packageInfo = context.PackageManager.GetPackageInfo(packageName, 0);
+            var packageInfo = context.PackageManager.GetPackageInfo(packageName, PackageInfoFlags.Of(0));
 
             var appPackageInfo = new AppPackageInfo
             {

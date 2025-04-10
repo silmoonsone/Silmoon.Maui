@@ -10,6 +10,7 @@ using Silmoon.Maui.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Versioning;
 using System.Text;
 using System.Threading.Tasks;
 using static Android.App.ActionBar;
@@ -76,7 +77,7 @@ namespace Silmoon.Maui.Platforms.Android.Handlers
                 else
                     base.OnReceivedSslError(view, handler, error);
             }
-            [Obsolete]
+            [ObsoletedOSPlatform("android24.0")]
             public override bool ShouldOverrideUrlLoading(AWebView view, string url)
             {
                 if (url.StartsWith("weixin"))
