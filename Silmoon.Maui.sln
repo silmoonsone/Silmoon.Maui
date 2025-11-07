@@ -18,6 +18,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决�
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiTesting", "MauiTesting\MauiTesting.csproj", "{CDB88533-E9AB-48FE-89F3-6DB9E69158EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,9 +44,17 @@ Global
 		{04192F6E-0B08-4ECF-A250-D1CD8246D2DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04192F6E-0B08-4ECF-A250-D1CD8246D2DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04192F6E-0B08-4ECF-A250-D1CD8246D2DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDB88533-E9AB-48FE-89F3-6DB9E69158EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDB88533-E9AB-48FE-89F3-6DB9E69158EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDB88533-E9AB-48FE-89F3-6DB9E69158EC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CDB88533-E9AB-48FE-89F3-6DB9E69158EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDB88533-E9AB-48FE-89F3-6DB9E69158EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CDB88533-E9AB-48FE-89F3-6DB9E69158EC} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E87C7406-7BE2-4484-AB2A-CCBFE5A9E286}

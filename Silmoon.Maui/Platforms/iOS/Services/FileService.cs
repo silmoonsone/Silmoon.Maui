@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Silmoon.Maui.Platforms.Services
 {
-    public class AppInfoService : IAppInfoService
+    public class FileService : FileServiceBase, IFileService
     {
-        public AppPackageInfo GetPackageInfo()
+        public void SaveImage(string name, byte[] data, Action<bool> callback, string albumName = null)
         {
-            return null;
+            throw new NotImplementedException();
         }
     }
 }

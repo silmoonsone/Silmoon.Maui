@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Silmoon.Maui.Services
+namespace Silmoon.Maui.Platforms.Services
 {
     public class AppInfoService : IAppInfoService
     {
