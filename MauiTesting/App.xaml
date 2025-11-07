@@ -2,9 +2,12 @@
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MauiTesting"
+             xmlns:sconvert="clr-namespace:Silmoon.Maui.Converters;assembly=Silmoon.Maui"
              x:Class="MauiTesting.App">
     <Application.Resources>
         <ResourceDictionary>
+            <sconvert:IsNullOrEmptyConvert x:Key="IsNullOrEmptyConverterer"></sconvert:IsNullOrEmptyConvert>
+            <sconvert:IsNotNullOrEmptyConvert x:Key="IsNotNullOrEmptyConverter"></sconvert:IsNotNullOrEmptyConvert>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
