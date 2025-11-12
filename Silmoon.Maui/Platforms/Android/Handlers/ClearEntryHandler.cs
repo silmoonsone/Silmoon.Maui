@@ -1,5 +1,6 @@
 ﻿using AndroidX.AppCompat.Widget;
 using Microsoft.Maui.Handlers;
+using Microsoft.Maui.Platform;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Silmoon.Maui.Platforms.Android.Handlers
 {
     public class ClearEntryHandler : EntryHandler
     {
-        protected override void ConnectHandler(AppCompatEditText platformView)
+        protected override void ConnectHandler(MauiAppCompatEditText platformView)
         {
             platformView.SetBackgroundColor(global::Android.Graphics.Color.Transparent);
             base.ConnectHandler(platformView);

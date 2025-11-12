@@ -25,6 +25,6 @@ public partial class SecoundPageViewModel : ObservableObject
     [RelayCommand]
     public async Task ButtonClicked()
     {
-        await page.DisplayAlert("标题", $"你输入的是: {Text}", "好");
+        await page.DisplayAlertAsync("标题", $"你输入的是: {Text}", "好");
     }
 }
