@@ -9,6 +9,6 @@
     <VerticalStackLayout Margin="10" Spacing="10">
         <Label Text="Welcome to .NET MAUI!" VerticalOptions="Center" HorizontalOptions="Center" />
         <Entry Text="{Binding Text}" Placeholder="input some text."></Entry>
-        <Button Text="Button" Command="{Binding ButtonClickedCommand}" IsEnabled="{Binding Text, Converter={StaticResource IsNotNullOrEmptyConverter}}"></Button>
+        <Button Text="Button" Command="{Binding ButtonClickedCommand}" IsEnabled="{Binding Text, Converter={StaticResource IsNotNullOrEmptyConvert}}"></Button>
     </VerticalStackLayout>
 </ContentPage>
