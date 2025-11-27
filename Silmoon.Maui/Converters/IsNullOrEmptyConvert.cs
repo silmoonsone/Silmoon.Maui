@@ -15,11 +15,12 @@ namespace Silmoon.Maui.Converters
                 return true;
             else if (value is string str)
                 return str.IsNullOrEmpty();
-            else if (value is ICollection collection && collection.Count > 1)
-                return false;
+            else if (value is ICollection collection)
+                return (collection?.Count ?? 0) == 0;
             else if (value is Array array && array.Length > 1)
-                return false;
-            return true;
+                return (array?.Length ?? 0) == 0;
+            else
+                return true;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
