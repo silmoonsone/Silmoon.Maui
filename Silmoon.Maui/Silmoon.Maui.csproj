@@ -16,11 +16,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.10" />
-    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="10.0.10" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.11" />
+    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="10.0.11" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="Silmoon" Version="2.0.2" />
-    <PackageReference Include="Silmoon.Extension" Version="2.0.0" />
+    <PackageReference Include="Silmoon.Extension" Version="2.0.1" />
   </ItemGroup>
 
 </Project>
