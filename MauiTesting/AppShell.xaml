@@ -11,8 +11,8 @@
         <Tab Title="Home">
             <ShellContent Title="Home" ContentTemplate="{DataTemplate local:MainPage}"></ShellContent>
         </Tab>
-        <Tab Title="Secound">
-            <ShellContent Title="Secound" ContentTemplate="{DataTemplate pages:SecoundPage}"></ShellContent>
+        <Tab Title="Second">
+            <ShellContent Title="Second" ContentTemplate="{DataTemplate pages:SecondPage}"></ShellContent>
         </Tab>
     </TabBar>
 </Shell>

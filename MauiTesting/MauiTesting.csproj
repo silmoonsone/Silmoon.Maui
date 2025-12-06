@@ -80,4 +80,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Silmoon.Maui\Silmoon.Maui.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Pages\SecondPage.xaml.cs">
+      <DependentUpon>SecondPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

@@ -4,21 +4,21 @@ using System.Threading.Tasks;
 
 namespace MauiTesting.Pages;
 
-public partial class SecoundPage : ContentPage
+public partial class SecondPage : ContentPage
 {
-    SecoundPageViewModel viewModel;
-    public SecoundPage()
+    SecondPageViewModel viewModel;
+    public SecondPage()
     {
-        BindingContext = viewModel = new SecoundPageViewModel(this);
+        BindingContext = viewModel = new SecondPageViewModel(this);
         InitializeComponent();
     }
 }
-public partial class SecoundPageViewModel : ObservableObject
+public partial class SecondPageViewModel : ObservableObject
 {
-    SecoundPage page;
+    SecondPage page;
     [ObservableProperty]
     public partial string Text { get; set; }
-    public SecoundPageViewModel(SecoundPage page)
+    public SecondPageViewModel(SecondPage page)
     {
         this.page = page;
     }
