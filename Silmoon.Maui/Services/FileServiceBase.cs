@@ -8,28 +8,30 @@ namespace Silmoon.Maui.Services
 {
     public class FileServiceBase
     {
-        public async Task CopyResourceRawFilesToAppData((string fileName, bool forceOverwrite)[] files)
+        public Task CopyResourceRawFilesToAppData((string fileName, bool forceOverwrite)[] files)
         {
-            Directory.CreateDirectory(FileSystem.AppDataDirectory);
-            foreach (var (fileName, forceOverwrite) in files)
+            return Task.Run(async () =>
             {
-                var destPath = Path.Combine(FileSystem.AppDataDirectory, fileName);
-
-                if (!File.Exists(destPath) || forceOverwrite)
+                Directory.CreateDirectory(FileSystem.AppDataDirectory);
+                foreach (var (fileName, forceOverwrite) in files)
                 {
-                    try
+                    var destPath = Path.Combine(FileSystem.AppDataDirectory, fileName);
+                    if (!File.Exists(destPath) || forceOverwrite)
                     {
-                        using var readStream = await FileSystem.OpenAppPackageFileAsync(fileName);
-                        using var writeStream = new FileStream(destPath, FileMode.Create, FileAccess.Write, FileShare.None);
-                        await readStream.CopyToAsync(writeStream);
-                    }
-                    catch (FileNotFoundException)
-                    {
-                        // 打包时没找到对应 Raw 文件 → 忽略
-                        continue;
+                        try
+                        {
+                            using var readStream = await FileSystem.OpenAppPackageFileAsync(fileName);
+                            using var writeStream = new FileStream(destPath, FileMode.Create, FileAccess.Write, FileShare.None);
+                            await readStream.CopyToAsync(writeStream);
+                        }
+                        catch (FileNotFoundException)
+                        {
+                            // 打包时没找到对应 Raw 文件 → 忽略
+                            continue;
+                        }
                     }
                 }
-            }
+            });
         }
     }
 }
