@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Silmoon.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,8 @@ namespace Silmoon.Maui.Services
                 foreach (var (fileName, forceOverwrite) in files)
                 {
                     var destPath = Path.Combine(FileSystem.AppDataDirectory, fileName);
+                    var directory = Path.GetDirectoryName(destPath);
+                    if (!Directory.Exists(directory)) Directory.CreateDirectoryRecursive(directory);
                     if (!File.Exists(destPath) || forceOverwrite)
                     {
                         try
